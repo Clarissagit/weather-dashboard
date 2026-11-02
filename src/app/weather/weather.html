@@ -1,0 +1,21 @@
+<h2>Weather Search</h2>
+<input [(ngModel)]="city" placeholder="Enter city" (keyup.enter)="showWeather()" />
+<button (click)="showWeather()">Search</button>
+
+@if (loading()) {
+  <p>Loading...</p>
+}
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+@if (temp() !== null) {
+  <div class="card">
+    <h3>{{ place() }}</h3>
+    <p class="big">{{ temp() }}°C</p>
+    <p>{{ condition() }}</p>
+    <p>Humidity: {{ humidity() }}%</p>
+    <p>Wind: {{ wind() }} km/h</p>
+  </div>
+}
